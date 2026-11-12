@@ -1,4 +1,4 @@
-package com.pm.patientservice.model;
+package com.pm.patientservice.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

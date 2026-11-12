@@ -1,8 +1,9 @@
 package com.pm.patientservice.service;
 
+import com.pm.patientservice.dto.PatientRequestDTO;
 import com.pm.patientservice.dto.PatientResponseDTO;
 import com.pm.patientservice.mapper.PatientMapper;
-import com.pm.patientservice.model.Patient;
+import com.pm.patientservice.entity.Patient;
 import com.pm.patientservice.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,11 @@ public class PatientService {
                         .map(PatientMapper::toDTO).toList();
         return patientResponseDTOS;
 
+    }
+
+    public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
+        Patient newPatient = patientRepository.save(
+                PatientMapper.toEntity(patientRequestDTO));
+        return PatientMapper.toDTO(newPatient);
     }
 }
